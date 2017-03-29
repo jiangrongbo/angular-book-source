@@ -1,0 +1,24 @@
+<!doctype html>
+<html ng-app>
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch07_02</title>
+    <script src="/angular-1.5.5/angular.js"></script> 
+    <style>
+        input.ng-invalid {
+            border: #f00 1px solid;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <form name="user">
+        <div>
+            <label>Email:</label>
+            <input type="email" name="email" ng-model="email" required/>
+            <span ng-show="user.email.$invalid">内容输入不合法</span>
+        </div>
+    </form>
+</div>
+</body>
+</html>

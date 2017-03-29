@@ -1,0 +1,41 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch16_06</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-extends/ng-dialog/ngDialog.js"></script>
+    <link rel="stylesheet" href="/angular-extends/ng-dialog/theme/ngDialog.css"/>
+    <link rel="stylesheet" 
+    href="/angular-extends/ng-dialog/theme/ngDialog-theme-default.min.css"/>
+    <link rel="stylesheet" 
+    href="/angular-extends/ng-dialog/theme/ngDialog-theme-plain.css">
+    <link rel="stylesheet" 
+    href="/angular-extends/ng-dialog/theme/ngDialog-custom-width.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"/>
+</head>
+<body>
+<div ng-controller="NgDialogController">
+    <div ng-include="'dialog.html'"></div>
+    
+    <button class="btn btn-success" type="button"
+    ng-dialog="popupTmpl.html"
+    ng-dialog-class="ngdialog-theme-default"
+    ng-dialog-controller="DialogController"
+    ng-dialog-close-previous>
+    登录
+    </button>
+</div>
+<script>
+    var myApp = angular.module("myApp", ['ngDialog']);
+    myApp.controller("NgDialogController",function($scope){
+       
+    });
+    myApp.controller("DialogController",function($scope){
+        $scope.login = function(){
+            alert("单击了登录按钮！");  
+        };
+    });
+</script>
+</body>
+</html>

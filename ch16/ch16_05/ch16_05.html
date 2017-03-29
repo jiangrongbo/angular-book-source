@@ -1,0 +1,51 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch16_05</title>
+    <script src="/jquery/jquery-2.0.3.js"></script>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-extends/angular-masonry/jquery-bridget/jquery-bridget.js"></script>
+    <script src="/angular-extends/angular-masonry/ev-emitter/ev-emitter.js"></script>
+    <script 
+    src="/angular-extends/angular-masonry/desandro-matches-selector/matches-selector.js">
+    </script>
+    <script src="/angular-extends/angular-masonry/fizzy-ui-utils/utils.js"></script>
+    <script src="/angular-extends/angular-masonry/get-size/get-size.js"></script>
+    <script src="/angular-extends/angular-masonry/outlayer/item.js"></script>
+    <script src="/angular-extends/angular-masonry/outlayer/outlayer.js"></script>
+    <script src="/angular-extends/angular-masonry/masonry/masonry.js"></script>
+    <script src="/angular-extends/angular-masonry/imagesloaded/imagesloaded.js"></script>
+    <script src="/angular-extends/angular-masonry/angular/angular.js"></script>
+    <script src="/angular-extends/angular-masonry/angular-masonry/angular-masonry.js">
+    </script>
+    <style>
+        .masonry-brick {
+            margin: 1em;
+            display: none;
+        }
+        .masonry-brick.loaded {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div ng-controller="MasonryController">
+    <div masonry>
+        <div class="masonry-brick" ng-repeat="brick in bricks">
+            <img ng-src="{{ brick.src }}" alt="A masonry brick">
+        </div>
+    </div>
+</div>
+<script>
+    var myApp = angular.module("myApp", ['wu.masonry']);
+    myApp.controller("MasonryController",function($scope){
+        $scope.bricks = [
+            {src:"/ch16/ch16_05/image/1.jpg"},
+            {src:"/ch16/ch16_05/image/2.jpg"},
+            {src:"/ch16/ch16_05/image/3.jpg"}
+        ];
+    });
+</script>
+</body>
+</html>

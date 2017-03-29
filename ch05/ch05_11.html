@@ -1,0 +1,33 @@
+<!doctype html>
+<html ng-app="msgModule">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch05_11</title>
+    <script type="text/javascript" src="../angular-1.5.5/angular.js">
+    </script>
+</head>
+<body>  
+    <div ng-controller="MsgController">
+        <div>
+            <button ng-click="scheduleTask()">3秒后回显信息
+            </button>
+        </div><br/><br/>
+        <div>
+            {{message}}
+        </div>
+    </div>
+    <script>
+        angular.module('msgModule',[]).controller('MsgController', 
+            function($scope) {
+                $scope.scheduleTask = function() {
+                    setTimeout(function() {
+                        $scope.$apply(function(){
+                            $scope.message = '信息内容';
+                            console.log('message='+$scope.message); 
+                        });
+                    }, 3000);
+                }
+            });
+    </script>
+</body>
+</html>

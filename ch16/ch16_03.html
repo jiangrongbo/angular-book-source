@@ -1,0 +1,24 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch16_03</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-extends/ng-chart/Chart.js"></script>
+    <script src="/angular-extends/ng-chart/angular-chart.js"></script>
+</head>
+<body>
+<div ng-controller="NgChartController">
+    <canvas id="pie" class="chart chart-pie"
+      chart-data="data" chart-labels="labels">
+    </canvas> 
+</div>
+<script>
+    var myApp = angular.module("myApp", ['chart.js']);
+    myApp.controller("NgChartController",function($scope){
+        $scope.labels = ["IE", "Chrome", "FireFox","其他"];
+        $scope.data = [30, 30, 20,20];
+    });
+</script>
+</body>
+</html>

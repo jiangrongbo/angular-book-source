@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app="directiveModule">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch08_08</title>
+    <script src="/angular-1.5.5/angular.js"></script> 
+</head>
+<body>
+<div repeat="5">
+    <div><h3>hello world!</h3></div>
+</div>
+<script>
+    var app = angular.module("directiveModule",[]);
+    app.directive("repeat",function(){
+        return {
+            restrict:'A',
+            replace:true,
+            compile: function(tElem, tAttrs){
+                console.log("compile...=>" +  tElem.html());
+                var temp = tElem.html();
+                for(var i=0;i<tAttrs.repeat-1;i++) {
+                    tElem.append(temp);
+                }
+                console.log("post compile...");
+            }
+        }
+    });
+</script>
+</body>
+</html>

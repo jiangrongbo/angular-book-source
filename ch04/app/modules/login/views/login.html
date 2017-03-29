@@ -1,0 +1,21 @@
+<!doctype html>
+<html ng-app="loginModule">
+<head>
+    <meta charset="UTF-8"> 
+    <title>登录页面</title>
+    <script type="text/javascript" src="/angular-1.3.0.14/angular.js"></script>
+    <script type="text/javascript" src="../loginModule.js"></script>
+    <script type="text/javascript" src="../js/controllers.js"></script>
+    <script type="text/javascript" src="../js/directives.js"></script>
+    <script type="text/javascript" src="../js/filters.js"></script>
+</head>
+<body>
+    <div ng-controller="UserController">
+        <div>用户名：<input type="text" ng-model="uname" placeholder="用户名"/>
+        </div><br/>
+        <div>密　码：<input type="password" ng-model="pword" placeholder="密码"/>
+        </div><br/>
+        <div><button ng-click="submit()">登录</button></div>
+    </div>
+</body>
+</html>

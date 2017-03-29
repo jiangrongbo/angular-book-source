@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app="watchModule">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch05_07</title>
+    <script type="text/javascript" src="../angular-1.5.5/angular.js">
+    </script>
+</head>
+<body>  
+    <div ng-repeat='item in items'>
+        <input ng-model='item.value'/>&nbsp;<span>{{item.value}}</span><br/><br/>
+    </div>
+    <div>change count: {{count}}</div>
+    <script>
+        angular.module('watchModule',[])
+             .run(['$rootScope',function($rootScope){
+                    $rootScope.count = 0;
+                     $rootScope.items = [
+                        { "value": 1 },
+                        { "value": 2 },
+                        { "value": 3 },
+                        { "value": 4 }
+                    ]
+                    $rootScope.$watch('items',function(){
+                        $rootScope.count++;
+                    },true)
+             }]);
+    </script>
+</body>
+</html>

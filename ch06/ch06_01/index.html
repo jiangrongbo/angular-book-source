@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="routeModule">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch06_01</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.min.css"/>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-1.5.5/angular-route.js"></script>
+    <script src="js/app.js"></script>
+    <style type="text/css">
+        .mainDiv{
+            margin: 25px 50px 75px 100px;
+        }
+    </style>
+</head>
+<body>  
+    <div class="mainDiv">
+       <!--导航栏-->
+        <ul class="nav nav-tabs">
+            <li><a href="#/showOrders"> 
+                <span class="glyphicon glyphicon-th-list"> </span> 订单列表</a>
+            </li>
+            <li><a href="#/addOrder"> 
+                <span class="glyphicon glyphicon-plus"> </span> 新增订单</a>
+            </li>
+        </ul>
+        <div ng-view></div>
+    </div>
+</body>
+</html>

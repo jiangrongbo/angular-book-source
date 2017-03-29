@@ -1,0 +1,12 @@
+.minefield {
+    line-height:0;
+    border-spacing:0;
+}
+
+.minefield td {
+    padding:0
+}
+
+.message{
+    color: #f00;
+}

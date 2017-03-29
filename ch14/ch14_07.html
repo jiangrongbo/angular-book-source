@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch14_07</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-extends/angular-file-upload.js"></script>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"/>
+</head>
+<body>
+<div style="margin-top:20px;" ng-controller="MainController" >
+    <input type="file" nv-file-select uploader="uploader" multiple><br/><br/>
+    <button ng-click="uploader.uploadAll()" class="btn btn-info">上传</button>
+</div>
+<script>
+    var myApp = angular.module("myApp", ['angularFileUpload']);
+    myApp.controller("MainController",function($scope, FileUploader){
+        var uploader = $scope.uploader = new FileUploader({
+            url: 'http://localhost:8081/fileUpload'
+        });
+        uploader.onSuccessItem = function(fileItem, response, status, headers) {
+            alert("file upload success!");
+        };
+        uploader.onErrorItem = function(fileItem, response, status, headers) {
+            alert("file upload error!");
+        };
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html ng-app="directiveModule">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch08_15</title>
+    <script src="/angular-1.5.5/angular.js"></script> 
+</head>
+<body>
+<div ng-controller="MainController">
+    <repeat-element>
+        <p>Hi {{name}},Welcome to you!</p>
+    </repeat-element>
+</div>
+<script>
+    var app = angular.module("directiveModule",[]);
+    app.controller("MainController",function($scope){
+        $scope.name = "Smith";
+    });
+    app.directive("repeatElement",function(){
+        return {
+            restrict:'E',
+            transclude: true,
+            link: function(scope, elem, attrs, ctrl, transcludeFn) {
+                for(i=0; i<5; i++){
+                    transcludeFn(function(clone) {
+                            elem.append(clone);
+                    });
+                }
+            },
+            template:"<span ng-transclude></span>"
+        }
+    });
+</script>
+</body>
+</html>

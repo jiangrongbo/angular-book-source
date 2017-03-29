@@ -1,0 +1,18 @@
+<!doctype html>
+<html ng-app="registerModule">
+<head>
+    <meta charset="UTF-8"> 
+    <title>注册页面</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="common.js"></script>
+</head>
+<body>
+    <div ng-controller="UserController">
+        <div>用户名：<input type="text" ng-model="uname" placeholder="用户名"/>
+        </div><br/>
+        <div>密　码：<input type="password" ng-model="pword" placeholder="密码"/>
+        </div><br/>
+        <div><button ng-click="submit()">注册</button></div>
+    </div>
+</body>
+</html>

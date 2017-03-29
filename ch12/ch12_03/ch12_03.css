@@ -1,0 +1,35 @@
+div{
+    width:50px;
+    height:50px;
+    border:1px solid #000;
+    background-color: #f00;
+    margin-top: 20px;
+}
+#box_01{
+    transform:rotate(20deg);
+    -ms-transform:rotate(20deg);
+    -webkit-transform:rotate(20deg); 
+    -moz-transform:rotate(20deg);
+    -o-transform:rotate(20deg);
+}
+#box_02{
+    transform:skew(20deg);
+    -ms-transform:skew(20deg);
+    -webkit-transform:skew(20deg);
+    -moz-transform:skew(20deg);
+    -o-transform:skew;(20deg);
+}
+#box_03{
+    transform:scale(1.5);
+    -ms-transform:scale(1.5);
+    -webkit-transform:scale(1.5);
+    -moz-transform:scale(1.5);
+    -o-transform:scale;(1.5);
+}
+#box_04{
+    transform:translate(100px,0);
+    -ms-transform:translate(100px,0);
+    -webkit-transform:translate(100px,0);
+    -moz-transform:translate(100px,0);
+    -o-transform:translate(100px,0);
+}

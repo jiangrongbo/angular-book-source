@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch15_09</title>
+    <link rel="stylesheet" href="/angular-extends/ui-grid/ui-grid.css" />
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-extends/ui-grid/ui-grid.js"></script>
+    <style>
+        .gridStyle {
+            border: 1px solid rgb(212,212,212);
+            width: 400px; 
+            height: 250px;
+        }
+    </style>
+</head>
+<body>
+<div ng-controller="GridDemoController">
+     <div class="gridStyle" ui-grid="gridOptions"></div>
+</div>
+<script>
+    var myApp = angular.module('myApp',['ui.grid']);
+    myApp.controller("GridDemoController",function($scope){
+        $scope.myData = [{name: "Moroni", age: 50},
+                         {name: "Tiancum", age: 43},
+                         {name: "Jacob", age: 27},
+                         {name: "Nephi", age: 29},
+                         {name: "Enos", age: 34}];
+        $scope.gridOptions = { 
+            data: 'myData',
+            columnDefs: [{field:'name', displayName:'姓名'},
+                         {field:'age', displayName:'年龄'}]
+        };
+    });
+</script>
+</body>
+</html>

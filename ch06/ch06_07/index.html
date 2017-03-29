@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app="routeModule">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch06_07</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.min.css">
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-extends/ui-route/angular-ui-router.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+<div>
+    <ul class="breadcrumb">
+        <li><a ui-sref="home">首页</a></li>
+        <li><a ui-sref="about">关于</a></li>
+        <li><a ui-sref="contact">联系我</a></li>
+    </ul>
+</div>
+<div ui-view></div>
+<div class="footer navbar-fixed-bottom">
+    <div class="container">
+        ©Jiang Rongbo, Blog : 
+        <a href="http://blog.csdn.net/rongbo_j">
+            http://blog.csdn.net/rongbo_j
+        </a>
+    </div>
+</div>
+</body>
+</html>

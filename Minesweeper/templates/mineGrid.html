@@ -1,0 +1,13 @@
+<img ng-if="spot.isCovered && spot.flag=='none'" src="../media/image/covered.png" />
+<img ng-if="spot.isCovered && spot.flag=='mine'" src="../media/image/flag-mine.png" />
+<img ng-if="spot.isCovered && spot.flag=='suspect'" src="../media/image/flag-suspect.png" />
+<img ng-if="!spot.isCovered && spot.content=='empty'" src="../media/image/empty.png" />
+<img ng-if="!spot.isCovered && spot.content=='mine'" src="../media/image/mine.png" />
+<img ng-if="!spot.isCovered && spot.content == 1" src="../media/image/number-1.png">
+<img ng-if="!spot.isCovered && spot.content == 2" src="../media/image/number-2.png">
+<img ng-if="!spot.isCovered && spot.content == 3" src="../media/image/number-3.png">
+<img ng-if="!spot.isCovered && spot.content == 4" src="../media/image/number-4.png">
+<img ng-if="!spot.isCovered && spot.content == 5" src="../media/image/number-5.png">
+<img ng-if="!spot.isCovered && spot.content == 6" src="../media/image/number-6.png">
+<img ng-if="!spot.isCovered && spot.content == 7" src="../media/image/number-7.png">
+<img ng-if="!spot.isCovered && spot.content == 8" src="../media/image/number-8.png">

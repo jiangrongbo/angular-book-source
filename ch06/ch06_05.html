@@ -1,0 +1,45 @@
+<!doctype html>
+<html ng-app="routeModule">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch06_05</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-1.5.5/angular-route.js"></script>
+</head>
+<body ng-controller="MultiViewController">
+    <div>
+        <button ng-click="goView1()">view1</button>&nbsp;
+        <button ng-click="goView2()">view2</button>
+    </div>
+    <div ng-view></div>
+    <script type="text/ng-template" id="/view1.html">
+        <h1>View1内容<h1>
+    </script>
+    <script type="text/ng-template" id="/view2.html">
+        <h1>View2内容<h1>
+    </script>
+    
+    <script>
+        var routeModule = angular.module('routeModule',['ngRoute'])
+        routeModule.config(['$routeProvider',
+            function($routeProvider) {
+                $routeProvider.
+                  when('/view1', {
+                    templateUrl: '/view1.html'
+                  }).
+                  when('/view2', {
+                    templateUrl: '/view2.html'
+                  })
+          }]);
+        routeModule.controller("MultiViewController",
+            function($scope,$location){
+                $scope.goView1 = function() {
+                    $location.path("/view1");
+                };
+                $scope.goView2 = function() {
+                    $location.path("/view2");
+                };
+        }); 
+    </script>
+</body>
+</html>

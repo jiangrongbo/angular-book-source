@@ -1,0 +1,54 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch14_05</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-1.5.5/angular-resource.js"></script>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"/>
+</head>
+<body>
+<div class="container" ng-controller="MainController">
+    <div style="margin-top:20px;margin-bottom:20px;" class="input-group">
+        <input ng-model="uname" placeholder="请输入姓名"  
+        type="text" class="form-control" >
+        <span ng-click="qryPersonInfo()" 
+        class="input-group-addon btn btn-success">
+        查询</span>
+    </div>
+<table ng-show="showInfo" class="table table-bordered">
+   <thead>
+      <tr class="bg-info">
+         <th>姓名</th><th>年龄</th><th>性别</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>{{person.name}}</td>
+         <td>{{person.age}}</td>
+         <td>{{person.sex}}</td>
+      </tr>
+   </tbody>
+</table>
+</div>
+<script>
+    var app = angular.module("app", ['ngResource']);
+    app.controller("MainController", function($scope,$resource) {
+         $scope.qryPersonInfo = function(){
+             var Person = $resource('http://localhost:8081/person/:name',
+                    {name: '@name'})
+             Person.get({name:$scope.uname})
+             .$promise.then(function(person){
+                if(person.name != undefined){
+                    $scope.showInfo = true;
+                    $scope.person = person;
+                } else {
+                    $scope.showInfo = false;
+                }
+             });
+         };
+    });  
+</script>
+</body>
+</html>

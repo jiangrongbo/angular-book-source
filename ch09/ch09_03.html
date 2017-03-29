@@ -1,0 +1,26 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch09_03</title>
+    <script src="/angular-1.5.5/angular.js"></script> 
+</head>
+<body>
+<div ng-controller="MainController">
+
+</div>
+<script>
+    var app = angular.module('app',[]);
+    app.factory("myFactory",function(){
+        return{
+            sayHello:function(){
+                alert("welcome to you!");
+            }
+        }
+    });
+    app.controller("MainController",function(myFactory){
+        myFactory.sayHello();
+    });
+</script>
+</body>
+</html>

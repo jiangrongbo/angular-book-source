@@ -1,0 +1,50 @@
+<!doctype html>
+<html ng-app="eventModule">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch05_13</title>
+    <script type="text/javascript" src="../angular-1.5.5/angular.js">
+    </script>
+    <style>
+        #parent{
+            width: 350px;
+            height: 250px;
+            border: 3px solid #ccc;
+        }
+        #child{
+            width: 300px;
+            height: 200px;
+            border: 3px solid #ccc;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>  
+    <div id="parent" ng-controller="ParentController"><!--父级作用域-->
+        父作用域
+        <div id="child" ng-controller="ChildController"><!--子级作用域-->
+            子作用域
+            <button ng-click="postEvent()">Emit</button>
+        </div>
+    </div>
+    <script>
+        var app = angular.module('eventModule',[])
+        
+        app.controller('ParentController', 
+            function($scope) {
+                $scope.$on("infoEvent",function(event,data){
+                    console.log("接收到子作用域事件...");
+                    console.log(data);
+                });
+            });
+        
+        app.controller('ChildController', 
+            function($scope) {
+                $scope.postEvent = function(){
+                    $scope.$emit("infoEvent",{name:"Jane",age:23});
+                }
+            });
+        
+    </script>
+</body>
+</html>

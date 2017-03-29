@@ -1,0 +1,26 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch15_07</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-extends/ui-ace/src-noconflict/ace.js"></script>
+    <script src="/angular-extends/ui-ace/ui-ace.js"></script>
+    <style>
+        .ace_editor { height: 300px; }
+    </style>
+</head>
+<body>
+<section>
+  <div ui-ace="{
+      useWrapMode : true,
+      showGutter: true,
+      theme:'twilight',
+      mode: 'java'
+  }"></div>
+</section>
+<script>
+    var myApp = angular.module('myApp',['ui.ace']);
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<script type="text/ng-template"  id="popupTmpl.html">
+   <div class="container" style="width:300px;">
+    <form class="form-horizontal" role="form">
+       <div class="form-group">
+          <label for="firstname" class="control-label">用户名</label>
+          <div>
+             <input type="text" class="form-control" id="firstname" 
+                placeholder="请输入用户名">
+          </div>
+       </div>
+       <div class="form-group">
+          <label for="lastname" class="control-label">密　码</label>
+          <div>
+             <input type="text" class="form-control" id="lastname" 
+                placeholder="请输入密码">
+          </div>
+       </div>
+       <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+             <div class="checkbox">
+                <label>
+                   <input type="checkbox"> 请记住我
+                </label>
+             </div>
+          </div>
+       </div>
+       <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+             <button type="submit" ng-click="login()" 
+                class="btn btn-default">登录</button>
+          </div>
+       </div>
+    </form>
+</div>
+</script>

@@ -1,0 +1,22 @@
+{
+  "name": "minesweeper",
+  "version": "1.0.0",
+  "description": "minesweeper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "angular": "^1.5.5",
+    "bootstrap": "^3.3.7",
+    "browser-sync": "^2.15.0",
+    "gulp": "^3.9.1",
+    "gulp-changed": "^1.3.2"
+  },
+  "author": "Rongbo",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.15.0",
+    "gulp": "^3.9.1"
+  }
+}

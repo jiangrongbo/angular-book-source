@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app="directiveModule">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch08_11</title>
+    <script src="/angular-1.5.5/angular.js"></script> 
+</head>
+<body>
+<div ng-controller="MainController">
+    <say-hello on-message="onMessage()"></say-hello>
+</div>
+<script>
+    var app = angular.module("directiveModule",[]);
+    app.controller("MainController",function($scope){
+        $scope.onMessage = function(){
+            console.log("onMessage function is called...");
+        };
+    });
+    app.directive("sayHello",function(){
+        return {
+            restrict:'E',
+            scope:{
+                onMessage:'&onMessage'
+            },
+            template:"<button ng-click='onMessage()'>Click Me!</button>"
+        }
+    });
+</script>
+</body>
+</html>

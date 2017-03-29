@@ -1,0 +1,24 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch10_05</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+</head>
+<body>
+<div ng-controller="MainController">
+    <div>默认格式:{{pi|number}}</div>
+    <div>保留0位:{{pi|number:0}}</div>
+    <!--大于小数点位数-->
+    <div>保留10位:{{pi|number:10}}</div>
+    <!--小于小数点位数-->
+    <div>保留2位:{{pi|number:2}}</div>
+</div>
+<script>
+    var app = angular.module("app", []);
+    app.controller("MainController", function($scope) {
+         $scope.pi = 3.1415926;
+    });  
+</script>
+</body>
+</html>

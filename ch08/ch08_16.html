@@ -1,0 +1,87 @@
+<!doctype html>
+<html ng-app="directiveModule">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch08_16</title>
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-theme.css"/>
+    <script src="/angular-1.5.5/angular.js"></script>
+</head>
+<body>
+<div>
+    <tabs active="0">
+        <tab label="主页">
+            <p>这是我的主页</p>
+        </tab>
+        <tab label="博客">
+            <p>我的个人博客：<a href="http://blog.csdn.net/rongbo_j">
+            http://blog.csdn.net/rongbo_j</a>
+            </p>
+        </tab>
+        <tab label="联系我">
+            <p>我的联系方式：<a href="mailto:jiangrongbo@gmail.com">
+            jiangrongbo@gmail.com</a>
+            </p>
+        </tab>
+    </tabs>
+</div>
+<script>
+    var app = angular.module('directiveModule', []);
+    app.directive('tab', function() {
+        return {
+        restrict: 'E',
+        scope: {
+            label: '@'
+        },
+        require: '^tabs',
+        transclude: true,
+        template: 
+            '<div ng-if="tab.selected">' +
+                '<div ng-transclude></div>' + 
+            '</div>'
+        ,
+        link: function ($scope, $element, $attrs, $ctrl) {
+            $scope.tab = {
+                label: $scope.label,
+                selected: false
+            };
+            $ctrl.addTab($scope.tab);
+        }
+      }
+    });
+    app.directive('tabs', function() {
+        return {
+          restrict: 'E',
+          scope: {},
+          transclude: true,
+          controller: function () {
+            this.tabs = [];
+            this.addTab = function addTab(tab) {
+                this.tabs.push(tab);
+            };
+            this.selectTab = function selectTab(index) {
+              for (var i = 0; i < this.tabs.length; i++) {
+                this.tabs[i].selected = false;
+              }
+              this.tabs[index].selected = true;
+            };
+          },
+          controllerAs: 'tabs',
+          link: function ($scope, $element, $attrs, $ctrl) {
+            $ctrl.selectTab($attrs.active || 0);
+          },
+          template: 
+            '<div>' +
+                '<ul class="nav nav-tabs">' +
+                    '<li ng-repeat="tab in tabs.tabs">' +
+                        '<a href="#" ng-click="tabs.selectTab($index);" ng-bind="tab.label"></a>' +
+                    '</li>' + 
+                '</ul>' +
+                '<div style="margin-top:30px" ng-transclude></div>' +
+            '</div>'
+          
+        };
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch12_02</title>
+    <style>
+        #mario{
+            position: absolute;
+            background-image: url(./mario.png);
+            background-position: 64px 0px;
+            width: 32px;
+            height: 40px;
+        }
+        #btn{
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+<div style="position:relative;">
+    <div id="mario"></div>
+</div>
+<div style="text-align:center;">
+    <button id="btn" onclick="moveMario()">开始移动</button>
+</div>
+<script>
+    var mario = document.getElementById("mario");
+    var state = 0;
+    mario.style.left = "0px";
+    mario.style.top = "0px";
+    var moveMario = function(){
+        console.log("state=>" + state);
+        state++;
+        if(state == 3){
+            state = 0;
+        }
+        mario.style.backgroundPosition = state*32 + "px " + "0px";
+        var xPos = parseInt(mario.style.left);
+        xPos += 2;
+        if(xPos < 350) {
+            mario.style.left = xPos + "px";
+            setTimeout("moveMario()",100);
+        }
+        
+    }
+</script>
+</body>
+</html>

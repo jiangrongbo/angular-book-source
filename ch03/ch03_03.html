@@ -1,0 +1,67 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch03_03</title>
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css"/>
+    <script type="text/javascript" src="../angular-1.5.5/angular.js">
+    </script>
+</head>
+<body>
+<div class="container" ng-controller="LoginController">
+  <div class="login-title text-center">
+        <h1><small>登录</small></h1>
+  </div>
+  <div class="form">
+    <div class="form-group">
+        <div class="col-xs-12">
+            <div class="input-group">
+                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-user"></span>
+                </span>
+                <input type="text" ng-model="uname" class="form-control" 
+                       placeholder="用户名">
+            </div>
+        </div>
+    </div><br/><br/>
+    <div class="form-group">
+        <div class="col-xs-12">
+            <div class="input-group">
+                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-lock"></span>
+                </span>
+                <input type="text" ng-model="pword" class="form-control" 
+                       placeholder="密码">
+            </div>
+        </div>
+    </div><br/><br/>
+    <div class="form-group form-actions">
+        <div class="col-xs-4 col-xs-offset-4 ">
+            <button ng-click="login()" type="submit" class="btn btn-sm btn-info">
+                <span class="glyphicon glyphicon-log-in"> </span>
+                 登录
+            </button>
+            <button type="reset" class="btn btn-sm btn-info">
+                <span class="glyphicon glyphicon-off"> </span>
+                重置
+            </button>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    function LoginController($scope) {
+        $scope.login = function(){
+            if($scope.uname == "admin"
+               && $scope.pword == "admin"){
+                alert("登录成功！");
+            } else {
+                alert("用户名密码错误，请检查！");   
+            }
+        }
+    }
+    var app = angular.module("app",[]);
+    app.controller("LoginController",LoginController);
+</script>
+</body>
+</html>

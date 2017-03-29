@@ -1,0 +1,15 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch17_07</title>
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="./controllers.js"></script>
+</head>
+<body ng-controller="MainController">  
+  单价：<input type="number" ng-model="price"><br/><br/>
+  数量：<input type="number" ng-model="num"><br/><br/>
+  <button ng-click="calculate()">计算</button><br/>
+  <p>总价：{{total}}</p>
+</body>
+</html>

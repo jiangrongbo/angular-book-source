@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch12_01</title>
+    <style>
+        #box{
+            position: absolute;
+            width:50px;
+            height:50px;
+            border:1px solid #000;
+            background-color: #f00;
+        }
+        #btn{
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+<div style="position:relative;">
+    <div id="box"></div>
+</div>
+<div style="text-align:center;">
+    <button id="btn" onclick="moveBox()">开始移动</button>
+</div>
+<script>
+    var box= document.getElementById("box");
+    box.style.left = "0px";
+    box.style.top = "0px";
+    var moveBox = function(){
+        var xPos = parseInt(box.style.left);
+        xPos += 5;
+        if(xPos < 350) {
+            box.style.left = xPos + "px";
+            setTimeout("moveBox()",10);
+        }
+    }
+</script>
+</body>
+</html>

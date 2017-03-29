@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch11_04</title>
+</head>
+<body>
+<script>
+    function Dog() {
+        this.cry = function(){
+            console.log("Wang Wang...");   
+        }
+    }
+    function Cat(){
+       this.cry = function() {
+           console.log("Miao Miao...");
+       }
+    }
+    var container = {"dog":new Dog(),"cat":new Cat()};
+    
+    function Family(dog, cat) {
+        this.feed = function() {
+            dog.cry();
+            cat.cry();
+        }
+    }
+    function getParams(func) {
+        var args = func.toString().match(/^function\s*[^\(]*\(\s*([^\)]*)\)/m);
+        if (args && args.length > 1) {
+            return args[1].replace(/\s*/g, '').split(','); 
+        }
+        return [];
+    };
+    var args = getParams(Family);
+    console.log("Family Param=>" + args);
+    var depends = [];
+    for (var i in args) {
+        depends[i] = container[args[i]];
+    }
+    console.log("Dependency Object=>" + depends);
+    var family = {};
+    Family.apply(family, depends);
+    console.log("Family Object=>" + family);
+    family.feed();
+</script>
+</body>
+</html>

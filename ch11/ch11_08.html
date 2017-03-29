@@ -1,0 +1,35 @@
+<!doctype html>
+<html ng-app="appMod">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch11_08</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+</head>
+<body ng-controller="MainController">
+<script>
+    var appMod = angular.module("appMod",[]);
+    appMod.service("helloService",function($http){
+        this.sayHello = function(){
+            alert("Hello,Welcome to you!"); 
+        }
+    });
+    /*
+    appMod.controller("MainController",function($injector){
+        var helloService = $injector.get("helloService");
+        helloService.sayHello();
+    });
+    */
+    /*
+    appMod.controller("MainController",function(){
+        var $injector =  angular.injector(['ng','appMod']);
+        var helloService = $injector.get("helloService");
+        helloService.sayHello();
+    });
+    */
+    appMod.controller("MainController",function($injector){
+        var depends = $injector.annotate(function($http,$scope){});
+        console.log(depends);
+    });
+</script>
+</body>
+</html>

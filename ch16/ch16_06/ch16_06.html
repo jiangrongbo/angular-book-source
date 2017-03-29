@@ -1,0 +1,48 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch16_06</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-extends/ng-dialog/ngDialog.js"></script>
+    <link rel="stylesheet" href="/angular-extends/ng-dialog/theme/ngDialog.css"/>
+    <link rel="stylesheet" 
+    href="/angular-extends/ng-dialog/theme/ngDialog-theme-default.min.css"/>
+    <link rel="stylesheet" 
+    href="/angular-extends/ng-dialog/theme/ngDialog-theme-plain.css">
+    <link rel="stylesheet" 
+    href="/angular-extends/ng-dialog/theme/ngDialog-custom-width.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"/>
+</head>
+<body>
+<div ng-controller="NgDialogController">
+    <div ng-include="'dialog.html'"></div>
+    <button class="btn btn-success" ng-click="openLoginDlg()">
+    登录</button>
+</div>
+<script>
+    var myApp = angular.module("myApp", ['ngDialog']);
+    myApp.controller("NgDialogController",function($scope,ngDialog){
+        $scope.openLoginDlg = function () {
+            ngDialog.open({ 
+                template: 'popupTmpl.html', 
+                className: 'ngdialog-theme-default',
+                closeByDocument: false,
+                controller: 'DialogController',
+                preCloseCallback: function(value){
+                    if(confirm("确定关闭")){
+                        return true;
+                    }
+                    return false;
+                }
+            });
+        };
+    });
+    myApp.controller("DialogController",function($scope){
+        $scope.login = function(){
+            alert("单击了登录按钮！");  
+        };
+    });
+</script>
+</body>
+</html>

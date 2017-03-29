@@ -1,0 +1,81 @@
+<div class="account-container register">
+	<div class="content clearfix">
+		<form novalidate name="signupForm" autocomplete="off">
+			<h1>注册新用户</h1>
+			<div class="login-fields">
+				<p>免费注册新用户：</p>
+				<div class="field">
+					<label for="firstname">用户姓：</label>
+					<input type="text" name="firstname"  
+                           placeholder="用户姓" 
+                           class="login" 
+                           ng-model="signup.firstname" 
+                           validator="required" 
+                           required-error-message="用户姓不能为空！" 
+                           valid-method="watch"	/>
+				</div>
+				<div class="field">
+					<label for="lastname">用户名：</label>	
+					<input type="text" name="lastname"  
+                           placeholder="用户名" 
+                           class="login" 
+                           ng-model="signup.lastname" 
+                           validator="required" 
+                           required-error-message="用户名不能为空！" 
+                           valid-method="watch"	/>
+				</div>
+				<div class="field">
+					<label for="email">邮箱：</label>
+					<input type="text" name="email"  
+                           placeholder="Email" 
+                           class="login" 
+                           ng-model="signup.email" 
+                           validator="required,email" 
+                           required-error-message="邮箱不能为空！" 
+                           email-error-message="邮箱地址不合法！" 
+                           valid-method="watch"	/>
+				</div> 
+				<div class="field">
+					<label for="password">密码：</label>
+					<input type="password" name="password" 
+                           placeholder="密码" 
+                           class="login" 
+                           ng-model="signup.password" 
+                           validator="required" 
+                           required-error-message="密码不能为空！" 
+                           valid-method="watch" />
+				</div>
+				<div class="field">
+					<label for="confirm_password">确认密码：</label>
+					<input type="password" 
+                           id="confirm_password"
+                           name="confirm_password"
+                           placeholder="确认密码" 
+                           class="login"/>
+				</div>
+			</div>
+			<div class="login-actions">
+				
+				<span class="login-checkbox">
+					<input id="Field" 
+                           name="Field" 
+                           type="checkbox" 
+                           class="field login-checkbox" 
+                           value="First Choice" 
+                           tabindex="4" />
+					<label class="choice" for="Field">同意条款&协议</label>
+				</span>
+									
+				<button class="button btn btn-primary btn-large" 
+                        validation-submit="signupForm" 
+                        ng-click="doSignup()">
+                    注册
+                </button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="login-extra">
+	已有账户? <a ui-sref="login">登录</a>
+</div> 

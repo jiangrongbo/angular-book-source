@@ -1,0 +1,23 @@
+{
+  "name": "ch17_03",
+  "authors": [
+    "Rongbo"
+  ],
+  "description": "",
+  "main": "index.js",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~3.0.0",
+    "angular": "~1.5.5",
+    "express": "^4.14.0"
+  }
+}

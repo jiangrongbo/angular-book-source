@@ -1,0 +1,44 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch14_04</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"/>
+</head>
+<body>
+<div ng-controller="MainController">
+   <table class="table table-bordered">
+   <thead>
+      <tr class="bg-info">
+         <th>姓名</th>
+         <th>年龄</th>
+         <th>性别</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr ng-repeat="person in persons">
+         <td>{{person.name}}</td>
+         <td>{{person.age}}</td>
+         <td>{{person.sex}}</td>
+      </tr>
+   </tbody>
+</table>
+ <button class="btn btn-info" ng-click="getInfo()">获取信息</button>
+</div>
+<script>
+    var app = angular.module("app", []);
+    app.controller("MainController", function($scope,$http) {
+         $scope.getInfo = function(){
+             var res = $http.get("http://localhost:8081/listPersons");
+             res.success(function(data,status,headers,config){
+                $scope.persons = data;
+             }).error(function(data,status,headers,config){
+                alert("error,status=>" + status);
+             });
+         };
+    });  
+</script>
+</body>
+</html>

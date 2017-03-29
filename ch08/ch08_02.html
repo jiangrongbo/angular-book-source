@@ -1,0 +1,26 @@
+<!doctype html>
+<html ng-app="directiveModule">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch08_02</title>
+    <script src="/angular-1.5.5/angular.js"></script> 
+</head>
+<body>
+<hello-world></hello-world>
+<hello:world></hello:world>
+<span hello-world></span>
+<span hello:world></span>
+<x-hello-world></x-hello-world>
+<data-hello-world></data-hello-world>
+<script>
+    var app = angular.module("directiveModule",[]);
+    app.directive("helloWorld",function(){
+        return {
+            restrict:'AEC',
+            replace:true,
+            template:'<h1>My First Custom Directive!</h1>'
+        }
+    });
+</script>
+</body>
+</html>

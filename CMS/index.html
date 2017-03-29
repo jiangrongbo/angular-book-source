@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="utf-8">
+	<title>客户管理系统</title>
+	<link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+	<link href="lib/bootstrap/bootstrap-responsive.min.css" rel="stylesheet">
+	<link href="lib/angular-ng-table/ng-table.min.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/dashboard.css" rel="stylesheet">
+	<link href="css/signin.css" rel="stylesheet">
+    
+    <script src="lib/jquery/jquery-1.11.0.js"></script>
+	<script src="lib/angular-chart/Chart.min.js"></script>
+	<script src="lib/angular/angular.min.js"></script>
+	<script src="lib/angular-ui-router/angular-ui-router.min.js"></script>	
+	<script src="lib/angular-ng-table/ng-table.min.js"></script>
+	<script src="lib/bootstrap/bootstrap.min.js"></script>
+	<script src="lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<script src="lib/angular-validation/angular-validation.js"></script>
+	<script src="lib/angular-validation/angular-validation-rule.js"></script>
+	<script src="lib/angular-chart/angular-chart.js"></script>
+			
+	<script src="app.js"></script>
+	<script src="modules/users/users.js"></script>
+	<script src="modules/dashboard/dashboard.js"></script>
+	<script src="modules/reports/reports.js"></script>
+	<script src="modules/customers/customers.js"></script>
+</head>
+<body>
+   <div ng-include="'modules/common/loginHeader.html'" ng-show="!userInfo"></div> 
+   <div ng-include="'modules/common/userHeader.html'" ng-show="userInfo"></div>
+   	
+   <div class="main">
+		<div class="main-inner">
+			<div class="container" ui-view>
+			</div>
+		</div>
+	</div>
+   	<div ng-include="'modules/common/footer.html'"></div> 
+</body>
+</html>

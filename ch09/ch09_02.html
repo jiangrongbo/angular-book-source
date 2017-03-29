@@ -1,0 +1,28 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch09_02</title>
+    <script src="/angular-1.5.5/angular.js"></script> 
+</head>
+<body>
+<div ng-controller="MainController">
+
+</div>
+<script>
+    var app = angular.module('app',[]);
+    app.service('myService',function($interval){
+        this.outputMsg=function(){ 
+            var i = 0;
+            $interval(function(){
+                i++;
+                console.info("function is called " + i + " times");
+            },3000);
+        }
+    });
+    app.controller("MainController",function($scope,myService){
+        myService.outputMsg();
+    });
+</script>
+</body>
+</html>

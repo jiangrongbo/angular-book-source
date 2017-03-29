@@ -1,0 +1,14 @@
+<!doctype html>
+<html ng-app>
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch02_06</title>
+    <script type="text/javascript" src="../angular-1.5.5/angular.js">
+    </script>
+</head>
+<body ng-init="price=10;num=1">  
+    <div>单价：<input type="number" ng-model="price" /></div><br/>
+    <div>数量：<input type="number" ng-model="num" /></div><br/>
+    <div>总价：{{price * num}}</div>
+</body>
+</html>

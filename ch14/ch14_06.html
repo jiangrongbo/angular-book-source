@@ -1,0 +1,61 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch14_06</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"/>
+</head>
+<body>
+<div style="margin-top:20px;" ng-controller="MainController">
+    <input type="file" file-model="myFile"/><br/>
+    <button ng-click="uploadFile()" class="btn btn-info">上传</button>
+</div>
+<script>
+    var myApp = angular.module("myApp", []);
+    myApp.directive('fileModel', function ($parse) {
+        return {
+           restrict: 'A',
+           link: function(scope, element, attrs) {
+              //使用$parse服务解析file-model属性值到一个方法中
+              console.log(attrs.fileModel);
+              var model = $parse(attrs.fileModel);
+              //model为一个方法，可以调用它获取模型数据
+              //model(scope);
+              //model.assign返回另一个方法，用于更新模型数据
+              var modelSetter = model.assign;
+
+              element.bind('change', function(){
+                 scope.$apply(function(){
+                    //更新模型数据，將文件对象添加到作用域中
+                    modelSetter(scope, element[0].files[0]);
+                 });
+              });
+           }
+        };
+     });
+     myApp.service('fileUpload',function ($http) {
+        this.uploadFileToUrl = function(file, uploadUrl){
+           var fd = new FormData();
+           fd.append('file', file);
+           $http.post(uploadUrl, fd, {
+              transformRequest: angular.identity,
+              headers: {'Content-Type': undefined}
+           }).success(function(){
+               alert("upload file success!");
+           }).error(function(){
+               alert("upload file error!");
+           });
+        }
+     });
+    myApp.controller("MainController", function($scope,fileUpload) {
+        $scope.uploadFile = function(){
+            var file = $scope.myFile;
+            var uploadUrl = "http://localhost:8081/fileUpload";
+            fileUpload.uploadFileToUrl(file, uploadUrl);
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch15_04</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-extends/ui-bootstrap/ui-bootstrap.js"></script>
+    <script src="/angular-extends/ui-bootstrap/ui-bootstrap-tpls.js"></script>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"/>
+</head>
+<body>
+<div ng-controller="ModalDemoController">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">对话框标题</h3>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="item in items">
+                    <a href="#" ng-click="$event.preventDefault(); 
+                        selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            已选择: <b>{{ selected.item }}</b>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">
+            确认</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">
+            取消</button>
+        </div>
+    </script>
+    <button type="button" class="btn btn-default" ng-click="open('sm')">打开对话框</button>
+    <div ng-show="selected">你在对话框选择了: {{ selected }}</div>
+</div>
+<script>
+    var myApp = angular.module('myApp',['ui.bootstrap']);
+    myApp.controller('ModalDemoController', function ($scope, $uibModal, $log) {
+        $scope.items = ['项目一', '项目二', '项目三'];
+        $scope.open = function (size) {
+            var modalInstance = $uibModal.open({
+              animation:'true',
+              templateUrl: 'myModalContent.html',
+              controller: 'ModalInstanceController',
+              size: size,
+              resolve: {
+                items: function () {
+                  return $scope.items;
+                }
+              }
+            });
+            modalInstance.result.then(function (selectedItem) {
+                $scope.selected = selectedItem;
+            }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
+        };
+    });
+    myApp.controller('ModalInstanceController', function ($scope, $uibModalInstance, items) {
+        $scope.items = items;
+        $scope.selected = {
+            item: $scope.items[0]
+        };
+        $scope.ok = function () {
+            $uibModalInstance.close($scope.selected.item);
+        };
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
+    });
+</script>
+</body>
+</html>

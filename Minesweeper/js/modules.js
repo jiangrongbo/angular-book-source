@@ -1,0 +1,1 @@
+var minesweeper = angular.module("Minesweeper",[]);

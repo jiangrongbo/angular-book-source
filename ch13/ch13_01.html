@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch13_01</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"/>
+</head>
+<body>
+<div class="container">
+    <form class="form-horizontal" role="form">
+       <div class="form-group">
+          <label for="firstname" class="col-sm-2 control-label">用户名</label>
+          <div class="col-sm-10">
+             <input type="text" class="form-control" id="username" 
+                placeholder="请输入用户名">
+          </div>
+       </div>
+       <div class="form-group">
+          <label for="lastname" class="col-sm-2 control-label">密　码</label>
+          <div class="col-sm-10">
+             <input type="text" class="form-control" id="password" 
+                placeholder="请输入密码">
+          </div>
+       </div>
+       <div>
+           <button class="btn btn-info" onclick="writeCookie()">写入Cookie</button>
+           <button class="btn btn-success" onclick="readCookie()">读取Cookie</button>
+       </div>
+    </form>
+</div>
+<script>
+    var writeCookie = function(){
+        var uname = document.getElementById("username").value;
+        var pword = document.getElementById("password").value;
+        document.cookie = "username=" + uname;
+        document.cookie = "password=" + pword;
+    };
+    var readCookie = function(){
+        var uname = getCookie("username");
+        var pword = getCookie("password");
+        alert("用户名=>" + uname + ";" + "密码=>" + pword);
+    };
+    var getCookie = function(cookieName) {
+        if (document.cookie.length>0) {
+            var valueStart = document.cookie.indexOf(cookieName + "=")
+            if (valueStart != -1) { 
+                valueStart = valueStart + cookieName.length + 1 
+                var valueEnd = document.cookie.indexOf(";",valueStart)
+                if (valueEnd == -1) {
+                    valueEnd=document.cookie.length;
+                }
+                return unescape(document.cookie.substring(valueStart,valueEnd))
+            } 
+        }
+        return ""
+    }
+</script>
+</body>
+</html>

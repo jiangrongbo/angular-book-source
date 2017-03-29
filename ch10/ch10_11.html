@@ -1,0 +1,54 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch10_11</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <style>
+        p { font-weight: bold; }
+    </style>
+</head>
+<body>
+<div ng-controller="MainController">
+    <div><p>原始数字：{{amount}}</p></div>
+    <div><p>转换后：{{amount|toRMB}}</p></div>
+    <div><p>字面量10230转换结果：{{10230|toRMB}}</p></div>
+</div>
+<script>
+    var app = angular.module("app", []);
+    app.controller("MainController", function($scope) {
+        $scope.amount = 1123.23;
+    });
+    app.filter("toRMB",function(){
+        return function(inputAmt){
+            var fraction = ['角', '分'];  
+            var digit = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];  
+            var unit = [ ['元', '万', '亿'], ['', '拾', '佰', '仟']  ];
+            var head = inputAmt < 0? '欠': '';  
+            inputAmt = Math.abs(inputAmt);
+            var s = '';
+            for (var i = 0; i < fraction.length; i++)   
+            {  
+                s += (digit[Math.floor(inputAmt * 10 * Math.pow(10, i)) % 10] 
+                      + fraction[i]).replace(/零./, '');  
+            }  
+            s = s || '整';  
+            inputAmt = Math.floor(inputAmt); 
+            for (var i = 0; i < unit[0].length && inputAmt > 0; i++)   
+            {  
+                var p = '';  
+                for (var j = 0; j < unit[1].length && inputAmt > 0; j++)   
+                {  
+                    p = digit[inputAmt % 10] + unit[1][j] + p;  
+                    inputAmt = Math.floor(inputAmt / 10);  
+                }  
+                s = p.replace(/(零.)*零$/, '').replace(/^$/, '零')  + unit[0][i] + s;  
+            }  
+            var result = head + s.replace(/(零.)*零元/, '元')
+                .replace(/(零.)+/g, '零').replace(/^整$/, '零元整'); 
+            return result;
+        }
+    });
+</script>
+</body>
+</html>

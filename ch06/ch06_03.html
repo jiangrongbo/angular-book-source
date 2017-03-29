@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app="routeModule">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch06_03</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-1.5.5/angular-route.js"></script>
+</head>
+<body>
+    <div>
+        <a href="#/view1">view1</a> <a href="#/view2">view2</a>
+    </div>
+    <div ng-view></div>
+    
+    <script type="text/ng-template" id="/view1.html">
+        <h1>View1内容<h1>
+    </script>
+    <script type="text/ng-template" id="/view2.html">
+        <h1>View2内容<h1>
+    </script>
+    
+    <script>
+        var routeModule = angular.module('routeModule',['ngRoute'])
+        routeModule.config(['$routeProvider',
+            function($routeProvider) {
+                $routeProvider.
+                  when('/view1', {
+                    templateUrl: '/view1.html'
+                  }).
+                  when('/view2', {
+                    templateUrl: '/view2.html'
+                  })
+          }]);
+
+    </script>
+</body>
+</html>

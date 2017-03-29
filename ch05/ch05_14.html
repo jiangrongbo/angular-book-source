@@ -1,0 +1,59 @@
+<!doctype html>
+<html ng-app="eventModule">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch05_14</title>
+    <script type="text/javascript" src="../angular-1.5.5/angular.js">
+    </script>
+    <style>
+        #parent{
+            width: 450px;
+            height: 250px;
+            border: 3px solid #ccc;
+        }
+        .child{
+            width: 150px;
+            height: 200px;
+            border: 3px solid #ccc;
+            float: left;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>  
+    <div id="parent" ng-controller="ParentController"><!--父级作用域-->
+        <div>父作用域
+        <button ng-click="postEvent()">Broadcast</button>
+        </div>
+        <div class="child" ng-controller="Child1Controller"><!--子级作用域-->
+            子作用域1
+        </div>
+        <div class="child" ng-controller="Child2Controller"><!--子级作用域-->
+            子作用域2
+        </div>
+    </div>
+    <script>
+        var app = angular.module('eventModule',[])
+        app.controller('ParentController', 
+            function($scope) {
+                $scope.postEvent = function() {
+                    $scope.$broadcast("infoEvent",{name:"Jane",age:23});
+                }
+            });
+        app.controller('Child1Controller', 
+            function($scope) {
+                $scope.$on("infoEvent",function(event,data){
+                    console.log("子作用域1接收到父作用域广播事件...");
+                    console.log(data);
+                });
+            });
+        app.controller('Child2Controller', 
+            function($scope) {
+                $scope.$on("infoEvent",function(event,data){
+                    console.log("子作用域2接收到父作用域广播事件...");
+                    console.log(data);
+                });
+            });
+    </script>
+</body>
+</html>

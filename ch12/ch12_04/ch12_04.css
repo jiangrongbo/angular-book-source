@@ -1,0 +1,15 @@
+div{
+    width:150px;
+    height:150px;
+    border:1px solid #000;
+    margin-top: 20px;
+}
+#box_01{
+    background: #0f0;
+    transition-property: background;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+}
+#box_01:hover{
+    background: #f00;
+}

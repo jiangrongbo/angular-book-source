@@ -1,0 +1,101 @@
+<div>
+	<form id="edit-profile" novalidate 
+          name="editCustomerForm" 
+          autocomplete="off" 
+          class="form-horizontal">
+		<fieldset>
+			<div class="control-group">											
+				<label class="control-label" for="username">登录名</label>
+				<div class="controls">
+					<input type="text" 
+                           class="span4 disabled" 
+                           id="username" 
+                           value="john.smith" disabled>
+					<p class="help-block">登录名用于登录本系统，无法修改!</p>
+				</div> 			
+			</div>
+			<div class="control-group">											
+				<label class="control-label" for="firstname">用户姓<sup>*</sup></label>
+				<div class="controls">
+					<input class="span4" 
+                           name="firstname" 
+                           placeholder="用户姓" 
+                           ng-model="customer.first_name" 
+                           validator="required" 
+                           required-error-message="First Name is required" 
+                           valid-method="watch" />	
+				</div>			
+			</div>
+			<div class="control-group">											
+				<label class="control-label" for="lastname">用户名<sup>*</sup></label>
+				<div class="controls">
+					<input class="span4" 
+                           name="lastname" 
+                           placeholder="用户名" 
+                           ng-model="customer.last_name" 
+                           validator="required" 
+                           required-error-message="Last Name is required" 
+                           valid-method="watch" />
+				</div>			
+			</div>
+			<div class="control-group">											
+				<label class="control-label" for="email">邮箱<sup>*</sup></label>
+				<div class="controls">
+					<input class="span4" name="email" 
+                           placeholder="邮箱" 
+                           ng-model="customer.email" 
+                           validator="required, email" 
+                           required-error-message="邮箱不能为空" 
+                           email-error-message="邮箱格式不合法" 
+                           valid-method="watch" />
+				</div>		
+			</div>
+			<div class="control-group">											
+				<label class="control-label" for="phone">手机号<sup>*</sup></label>
+				<div class="controls">
+					<input class="span4" 
+                           name="phone" 
+                           placeholder="手机号" 
+                           ng-model="customer.phone" 
+                           validator="required" 
+                           required-error-message="Phone is required" 
+                           valid-method="watch" />
+				</div>		
+			</div>
+			<div class="control-group">											
+				<label class="control-label" for="bio">个人简历</label>
+				<div class="controls">
+					<textarea class="span4" 
+                              name="bio" 
+                              placeholder="Bio" 
+                              ng-model="customer.bio" />
+				</div>				
+			</div>
+			<div class="control-group">											
+				<label class="control-label" for="Country">国籍<sup>*</sup></label>
+				<div class="controls">
+					<select class="span4" name="country" 
+                            ng-model="customer.country" 
+                            validator="required" 
+                            required-error-message="Country is required" 
+                            valid-method="watch">
+					<option value="">选择国家</option>
+					<option value="United States">United States</option>
+					<option value="United Kindgdom">United Kingdom</option>
+					<option value="India">India</option>
+					<option value="Australia">Australia</option>
+					</select>
+				</div>			
+			</div> 
+			<div class="form-actions">
+				<input type="hidden" name="id" ng-model="customer.id">
+				<button type="button" 
+                        class="btn btn-primary" 
+                        validation-submit="editCustomerForm" 
+                        ng-click="updateCustomer()">保存</button> 
+				<button ng-click="cancel()" class="btn">取消</button>
+			</div>
+		</fieldset>
+	</form>
+								
+</div>

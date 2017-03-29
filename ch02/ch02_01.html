@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch02_01</title>
+</head>
+<body >  
+    <div>
+        用户名：<input type="text" name="uname" id="uname" />
+    </div>
+    <div>
+        <span id="info"></span>
+    </div>
+    <script type="text/javascript">
+        var uname = document.getElementById("uname");
+        var info = document.getElementById("info");
+        uname.onkeyup = function(){
+            info.innerHTML = uname.value;
+        }
+    </script>
+</body>
+</html>

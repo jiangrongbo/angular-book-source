@@ -1,0 +1,22 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch10_07</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+</head>
+<body>
+<div ng-controller="MainController">
+    <div>{{now|date}}</div>
+    <div>{{now|date:'yyyy-MM-dd hh:mm:ss'}}</div>
+    <div>{{now|date:'yyyy/MM/dd hh-mm-ss'}}</div>
+    <div>{{now|date:'yyyy年MM月dd日'}}</div>
+</div>
+<script>
+    var app = angular.module("app", []);
+    app.controller("MainController", function($scope) {
+         $scope.now = new Date();
+    });  
+</script>
+</body>
+</html>

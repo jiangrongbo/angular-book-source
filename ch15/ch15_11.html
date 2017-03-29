@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch15_11</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-1.5.5/angular-sanitize.js"></script>
+    <script src="/angular-extends/ui-select/select.js"></script>
+    <link rel="stylesheet" href="/angular-extends/ui-select/select.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"/>
+</head>
+<body class="container text-left">
+<div  style="width:200px" ng-controller="SelectDemoController">
+    <ui-select ng-model="selected.value">
+        <ui-select-match>
+            <span ng-bind="$select.selected.name"></span>
+        </ui-select-match>
+        <ui-select-choices repeat="item in itemArray">
+            <span ng-bind="item.name"></span>
+        </ui-select-choices>
+    </ui-select>
+</div>
+<script>
+    var myApp = angular.module('myApp',['ui.select', 'ngSanitize']);
+    myApp.controller("SelectDemoController",function($scope){
+         $scope.itemArray = [
+            {id: 1, name: 'first'},
+            {id: 2, name: 'second'},
+            {id: 3, name: 'third'},
+            {id: 4, name: 'fourth'},
+            {id: 5, name: 'fifth'},
+        ];
+        $scope.selected = { value: $scope.itemArray[0] };
+    });
+</script>
+</body>
+</html>

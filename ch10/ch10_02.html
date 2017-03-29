@@ -1,0 +1,21 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch10_02</title>
+    <script src="/angular-1.5.5/angular.js"></script> 
+</head>
+<body>
+<div ng-controller="MainController">
+    {{amount}}<br/>
+    {{date}}
+</div>
+<script>
+    var app = angular.module('app',[]);
+    app.controller("MainController",function($scope,$filter){
+        $scope.amount = $filter('currency')(1000123);
+        $scope.date = $filter('date')(new Date(),'yyyy-MM-dd hh:mm:ss');
+    });
+</script>
+</body>
+</html>

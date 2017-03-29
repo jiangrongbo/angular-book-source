@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app="routeModule">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch06_04</title>
+    <base href="http://127.0.0.1:3324/">
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-1.5.5/angular-route.js"></script>
+</head>
+<body>
+    <div ng-controller="LocationController">
+    </div>
+    <script>
+        var routeModule = angular.module('routeModule', ['ngRoute']);
+        routeModule.config(['$locationProvider',
+            function($locationProvider) {
+              $locationProvider.html5Mode(true);
+        }]);
+        routeModule.controller("LocationController",
+            function($scope,$location){
+                console.log($location.path());
+            }
+        );
+
+    </script>
+</body>
+</html>

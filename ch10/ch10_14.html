@@ -1,0 +1,28 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch10_14</title>
+    <link rel="stylesheet" href="/angular-extends/emoji.min.css"/>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-extends/emoji.min.js"></script>
+    <script src="/angular-1.5.5/angular-sanitize.js"></script>
+</head>
+<body>
+<div ng-controller="MainController">
+    <div ng-repeat="message in messages">
+        <span ng-bind-html="message|emoji"></span>
+    </div>
+</div>
+<script>
+    var app = angular.module("app", ['emoji','ngSanitize']);
+    app.controller("MainController", function($scope) {
+        $scope.messages = [
+            "动物: :dog: :cat: :snake:",
+            "表情: :smile: :confused: :angry:",
+            "建筑: :house: :school: :hotel:"
+        ];
+    });
+</script>
+</body>
+</html>

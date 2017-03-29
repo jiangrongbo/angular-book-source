@@ -1,0 +1,18 @@
+div{
+    width:100px;
+    height:100px;
+    border:1px solid #000;
+    margin-top: 20px;
+}
+#box_01{
+    background: #0f0;
+    transition-property: background,width,height,transform;
+    transition-duration: 1s,1s,1s,1s;
+    transition-timing-function: linear,linear,linear,linear;
+}
+#box_01:hover{
+    background: #f00;
+    width: 150px;
+    height: 150px;
+    transform: rotate(360deg);
+}

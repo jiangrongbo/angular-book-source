@@ -1,0 +1,23 @@
+<div class="row">
+<div class="span12">
+    <div class="widget widget-table action-table">
+	<div class="widget-header"> <i class="icon-th-list"></i>
+	  <h3>客户信息</h3>
+	</div>
+	<div class="widget-content" style="padding:10px;">
+        <tabset>
+            <tab heading="查看" 
+                 ui-sref="customer.view({id:$state.params.id})" 
+                 active="$state.includes('customer.view')">
+                <div ui-view="viewCustomer"></div>
+            </tab>
+            <tab heading="编辑" 
+                 ui-sref="customer.edit({id:$state.params.id})" 
+                 active="$state.includes('customer.edit')">
+                <div ui-view="editCustomer"></div>
+            </tab>
+        </tabset>
+	</div>
+  </div>
+</div>
+</div>

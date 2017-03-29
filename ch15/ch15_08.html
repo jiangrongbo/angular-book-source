@@ -1,0 +1,40 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch15_08</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-extends/ui-ace/src-noconflict/ace.js"></script>
+    <script src="/angular-extends/ui-ace/ui-ace.js"></script>
+    <style>
+        .ace_editor { height: 300px; }
+    </style>
+</head>
+<body>
+<div ng-controller="AceDemoController">
+    <section>
+      <div ui-ace="{ onLoad : aceLoaded }"></div>
+    </section>
+</div>
+<script>
+    var myApp = angular.module('myApp',['ui.ace']);
+    myApp.controller("AceDemoController",function($scope){
+        $scope.aceLoaded = function(_editor){
+        // Editor part
+        var _session = _editor.getSession();
+        var _renderer = _editor.renderer;
+        // Options
+        _editor.setFontSize(20);
+        _session.setUndoManager(new ace.UndoManager());
+        _session.setMode("ace/mode/javascript");
+        _renderer.setShowGutter(true);
+        // Events
+        _editor.on("changeSession", function(){ });
+        _session.on("change", function(){
+            console.log("change....");
+        });
+      };
+    });
+</script>
+</body>
+</html>

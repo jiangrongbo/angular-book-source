@@ -1,0 +1,51 @@
+<!doctype html>
+<html ng-app="cookieMod">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch13_03</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"/>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-1.5.5/angular-cookies.js"></script>
+</head>
+<body>
+<div class="container" ng-controller="CookieController">
+    <form class="form-horizontal" role="form">
+       <div class="form-group">
+          <label for="firstname" class="col-sm-2 control-label">用户名</label>
+          <div class="col-sm-10">
+             <input type="text" class="form-control" ng-model="username" 
+                placeholder="请输入用户名">
+          </div>
+       </div>
+       <div class="form-group">
+          <label for="lastname" class="col-sm-2 control-label">密　码</label>
+          <div class="col-sm-10">
+             <input type="text" class="form-control" ng-model="password" 
+                placeholder="请输入密码">
+          </div>
+       </div>
+       <div>
+           <button class="btn btn-info" ng-click="writeCookie()">写入Cookie</button>
+           <button class="btn btn-success" ng-click="readCookie()">读取Cookie</button>
+       </div>
+    </form>
+</div>
+<script>
+    var cookieMod = angular.module("cookieMod",['ngCookies']);
+    cookieMod.controller("CookieController",function($cookieStore,$scope){
+        $scope.writeCookie = function(){
+            var user = {};
+            user.username = $scope.username;
+            user.passowrd = $scope.password;
+            $cookieStore.put("user",user);
+        };
+        
+        $scope.readCookie = function(){
+            var user = $cookieStore.get("user");
+            alert("user.username=>" + user.username + "; "
+                  + "user.password=>" + user.passowrd);
+        };
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch12_09</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"/>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-1.5.5/angular-animate.js"></script>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: #ccc;
+        }
+        .box.ng-enter{
+            transition: 0.5s linear all;
+            width: 0px;
+            height: 0px;
+        }
+        .box.ng-enter-active{
+            width: 200px;
+            height: 200px;
+        }
+         .box.ng-leave{
+            transition: 0.5s linear all;
+            width: 200px;
+            height:200px;
+         }
+        .box.ng-leave-active{
+            width: 0px;
+            height:0px;
+        }
+    </style>
+</head>
+<body ng-controller="MainController">
+    <div class="box" ng-if="isShow"></div><br/>
+    <div>
+        <button class="btn" ng-click="isShow=true">显示</button>&nbsp;
+        <button class="btn" ng-click="isShow=false">隐藏</button>
+    </div>
+<script>
+    var myApp = angular.module('myApp',['ngAnimate']);
+    myApp.controller("MainController",function($scope){
+        $scope.isShow = false;
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch09_05</title>
+    <script src="/angular-1.5.5/angular.js"></script> 
+</head>
+<body>
+<div ng-controller="MainController">
+</div>
+<script>
+    var app = angular.module('app',[]);
+    app.constant("version","1.0.0");
+    app.value("CONFIG","app.properties");
+    
+    app.controller("MainController",function(version,CONFIG){
+        console.log("app version=>" + version);
+        console.log("config file=>" + CONFIG);
+    });
+</script>
+</body>
+</html>

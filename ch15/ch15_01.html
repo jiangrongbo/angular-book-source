@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch15_01</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-extends/ui-bootstrap/ui-bootstrap.js"></script>
+    <script src="/angular-extends/ui-bootstrap/ui-bootstrap-tpls.js"></script>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"/>
+</head>
+<body>
+<div ng-controller="AlertDemoController">
+  <div uib-alert ng-repeat="alert in alerts" 
+     ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">
+      {{alert.msg}}
+  </div>
+  <button type="button" class='btn btn-default' ng-click="addAlert()">增加警告框</button>
+</div>
+<script>
+    var myApp = angular.module("myApp", ['ui.bootstrap']);
+    myApp.controller("AlertDemoController",function($scope){
+        $scope.alerts = [
+            { type: 'danger', msg: '这是一条警告信息！' },
+            { type: 'success', msg: '这是一条成功信息！' }
+        ];
+        $scope.addAlert = function() {
+            $scope.alerts.push({msg: '新增的警告框!'});
+        };
+
+        $scope.closeAlert = function(index) {
+            $scope.alerts.splice(index, 1);
+        };
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch15_10</title>
+    <script src="/jquery/jquery-2.0.3.js"></script>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-extends/ui-date/date.js"></script>
+    <script src="/angular-extends/ui-date/jquery-ui/jquery-ui.js"></script>
+    <!--
+    <link rel="stylesheet" 
+    href="/angular-extends/ui-date/jquery-ui/themes/hot-sneaks/jquery-ui.css"/>
+    -->
+    <link rel="stylesheet" 
+    href="/angular-extends/ui-date/jquery-ui/themes/cupertino/jquery-ui.css"/>
+</head>
+<body>
+<div ng-controller="DateDemoController">
+    <input ui-date="dateOptions">
+</div>
+<script>
+    var myApp = angular.module('myApp',['ui.date']);
+    myApp.controller("DateDemoController",function($scope){
+        $scope.dateOptions = {
+            changeYear: true,
+            changeMonth: true,
+            yearRange: '1900:-0',    
+        };
+    });
+</script>
+</body>
+</html>

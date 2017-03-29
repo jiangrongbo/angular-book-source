@@ -1,0 +1,23 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch10_06</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+</head>
+<body>
+<div ng-controller="MainController">
+    <div>{{text|lowercase}}</div>
+    <div>{{message|lowercase}}</div>
+    <div>{{text|uppercase}}</div>
+    <div>{{message|uppercase}}</div>
+</div>
+<script>
+    var app = angular.module("app", []);
+    app.controller("MainController", function($scope) {
+         $scope.text = "Hello World!";
+         $scope.message = "Message:11203";
+    });  
+</script>
+</body>
+</html>

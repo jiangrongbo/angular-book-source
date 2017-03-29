@@ -1,0 +1,46 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch15_02</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-extends/ui-bootstrap/ui-bootstrap.js"></script>
+    <script src="/angular-extends/ui-bootstrap/ui-bootstrap-tpls.js"></script>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"/>
+</head>
+<body>
+<div ng-controller="ButtonDemoController">
+    <h4>Checkbox</h4>
+    <pre>Model: {{checkModel}}</pre>
+    <pre>Results: {{checkResults}}</pre>
+    <div class="btn-group">
+        <label class="btn btn-primary" 
+            ng-model="checkModel.left" uib-btn-checkbox>Left</label>
+        <label class="btn btn-primary" 
+            ng-model="checkModel.middle" uib-btn-checkbox>Middle</label>
+        <label class="btn btn-primary" 
+            ng-model="checkModel.right" uib-btn-checkbox>Right</label>
+    </div>
+</div>
+<script>
+    var myApp = angular.module("myApp", ['ui.bootstrap']);
+    myApp.controller("ButtonDemoController",function($scope){
+      $scope.checkModel = {
+        left: false,
+        middle: true,
+        right: false
+      };
+      $scope.checkResults = [];
+      $scope.$watchCollection('checkModel', function () {
+        $scope.checkResults = [];
+        angular.forEach($scope.checkModel, function (value, key) {
+          if (value) {
+            $scope.checkResults.push(key);
+          }
+        });
+      });
+    });
+</script>
+</body>
+</html>

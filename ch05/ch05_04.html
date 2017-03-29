@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch05_04</title>
+</head>
+<body>  
+    <script type="text/javascript">
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        
+        var person = new Person('jane',28);
+        var student = Object.create(person);
+        student.love = "pingpong";
+        console.log(Object.getPrototypeOf(student));
+        console.log("student.name=>"+student.name);
+        console.log("student.age=>"+student.age);
+        console.log("student.love=>"+student.love);
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html ng-app="appMod">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch11_06</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+</head>
+<body ng-controller="MainController">
+<script>
+    var appMod = angular.module("appMod",[]);
+    appMod.config(function($provide){
+        $provide.provider("sayHello",function(){
+            this.$get = function(){
+                return function(){
+                    alert("Hello,Welcome to you!");
+                }
+            }
+        });
+    });
+    appMod.controller("MainController",function(sayHello){
+        sayHello();
+    });
+</script>
+</body>
+</html>

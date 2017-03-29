@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app="directiveModule">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch08_11</title>
+    <script src="/angular-1.5.5/angular.js"></script> 
+</head>
+<body>
+<div ng-controller="MainController">
+    用户名：<input type="text" ng-model="name"/>
+    <say-hello name-attr="name"></say-hello>
+</div>
+<script>
+    var app = angular.module("directiveModule",[]);
+    app.controller("MainController",function($scope){
+        $scope.name = "Smith";
+    });
+    app.directive("sayHello",function(){
+        return {
+            restrict:'E',
+            scope:{
+                name:'=nameAttr'
+            },
+            link:function(scope, elem, attrs){
+                scope.name = "Jane";
+            },
+            template:"<h3>hello,{{name}}</h3>"
+        }
+    });
+</script>
+</body>
+</html>

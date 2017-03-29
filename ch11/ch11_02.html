@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch11_02</title>
+</head>
+<body>
+<script>
+    function AppLog() {
+        this.startInfo = function(){
+            console.info("=========应用开始启动=========");
+            console.error("=========应用启动错误=========");
+            console.info("=========应用关闭，请检查错误=========");
+        }
+    }
+    var appLog = new AppLog();
+    function App(){
+        this.start = function(){
+             appLog.startInfo();
+        }
+    }
+    var app =new App();
+    app.start();
+</script>
+</body>
+</html>

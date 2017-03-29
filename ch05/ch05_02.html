@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch05_02</title>
+</head>
+<body>  
+    <script type="text/javascript">
+        function Animal(){
+            this.eat = function(){
+                console.log('eat...');
+            }
+        }       
+        function Cat(age){
+            this.age = age;
+        }
+        Cat.prototype = new Animal();
+        var cat = new Cat(10);
+        console.log("cat.age=" + cat.age);
+        cat.eat();
+    </script>
+</body>
+</html>

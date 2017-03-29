@@ -1,0 +1,45 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch14_02</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+</head>
+<body>
+<div ng-controller="MainController">
+   <div>结果：{{result}}</div>
+   <div>执行时间：{{totalTime}}</div>
+   <div>{{failure}}</div>
+</div>
+<script>
+    var app = angular.module("app", []);
+    app.controller("MainController", function($scope,$q) {
+       function add(x,y){
+           var q = $q.defer();
+           setTimeout(function() {
+               var result = x + y;
+               if(result >= 0) {
+                    q.resolve(result);   
+               } else {
+                    q.reject('negatvie value:' + result);
+               }
+           },300);
+           return q.promise;
+       }
+       var startTime = Date.now();
+       var promise = add(20,30);
+       promise.then(function(result){
+            return add(result,40);
+       }).then(function(result){
+            return add(result,-140);
+       }).then(function(result){
+           $scope.result = result;
+       }).catch(function(failure){
+           $scope.failure = failure;
+       }).finally(function(){
+           $scope.totalTime = Date.now() - startTime;
+       });
+    });  
+</script>
+</body>
+</html>

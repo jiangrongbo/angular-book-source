@@ -1,0 +1,59 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch15_05</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-extends/ui-bootstrap/ui-bootstrap.js"></script>
+    <script src="/angular-extends/ui-bootstrap/ui-bootstrap-tpls.js"></script>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"/>
+</head>
+<body>
+<div style="margin-top:30px" ng-controller="DropdownController">
+    <div class="btn-group" uib-dropdown dropdown-append-to-body>
+      <button id="btn-append-to-body" type="button" 
+        class="btn btn-primary" uib-dropdown-toggle>
+         下拉菜单1 <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" uib-dropdown-menu role="menu" 
+       aria-labelledby="btn-append-to-body">
+        <li role="menuitem"><a href="#" ng-click="clickItem1()">子菜单项1</a></li>
+        <li role="menuitem"><a href="#">子菜单项2</a></li>
+        <li role="menuitem"><a href="#">子菜单项3</a></li>
+        <li class="divider"></li>
+        <li role="menuitem"><a href="#">子菜单项4</a></li>
+      </ul>
+    </div>
+    <div class="btn-group" uib-dropdown>
+      <button id="button-template-url" type="button" 
+       class="btn btn-primary" uib-dropdown-toggle>
+        下拉菜单2 <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" uib-dropdown-menu template-url="dropdown.html"
+       aria-labelledby="button-template-url">
+      </ul>
+    </div>
+    <hr/>
+    <script type="text/ng-template" id="dropdown.html">
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu"
+        aria-labelledby="button-template-url">
+          <li role="menuitem"><a href="#" ng-click="clickItem1()">
+          子菜单项1（模版）</a></li>
+          <li role="menuitem"><a href="#">子菜单项2（模版）</a></li>
+          <li role="menuitem"><a href="#">子菜单项3（模版）</a></li>
+          <li class="divider"></li>
+          <li role="menuitem"><a href="#">子菜单项4（模版）</a></li>
+        </ul>
+    </script>
+</div>
+<script>
+    var myApp = angular.module('myApp',['ui.bootstrap']);
+    myApp.controller('DropdownController', function ($scope) {
+        $scope.clickItem1 = function(){
+            alert("Click Item1!");   
+        }
+    });
+</script>
+</body>
+</html>

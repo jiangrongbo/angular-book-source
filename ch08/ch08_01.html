@@ -1,0 +1,25 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch08_01</title>
+    <script src="/angular-1.5.5/angular.js"></script> 
+</head>
+<body>
+<div ng-controller="MainController">
+    <div ng-repeat="person in persons">
+        姓名：{{person.name}}<br/>
+        年龄：{{person.age}}<br/>
+        地址：{{person.address}}<br/>
+    </div>
+</div>
+<script>
+    angular.module("app",[]).controller("MainController",
+        function($scope){
+            $scope.persons=[{"name":"Smith","age":20,"address":"China"},
+                {"name":"Jane","age":30,"address":"USA"}];
+        }
+    );
+</script>
+</body>
+</html>

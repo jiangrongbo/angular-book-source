@@ -1,0 +1,28 @@
+<!doctype html>
+<html ng-app="watchModule">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch05_09</title>
+    <script type="text/javascript" src="../angular-1.5.5/angular.js">
+    </script>
+</head>
+<body>  
+    <input ng-model='num' type='number'/>
+    <div>change count: {{count}}</div>
+    <script>
+        angular.module('watchModule',[])
+             .run(['$rootScope',function($rootScope){
+                    $rootScope.count = 0;
+                    $rootScope.num = 100;
+                    var unbindWatcher= $rootScope
+                    .$watch('num',function(newValue,oldVaule){
+                        if(newValue == 2){
+                            unbindWatcher();
+                        }
+                        $rootScope.count++;
+                        
+                    })
+             }]);
+    </script>
+</body>
+</html>

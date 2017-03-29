@@ -1,0 +1,19 @@
+.todo-item {
+  transition: color 0.6s, background-color 0.3s;
+}
+.todo-item  label {
+    display: block;
+}
+.todo-complete {
+  background: #f3f3f3;
+  color: #777;
+}
+.todo-complete label {
+    text-decoration: line-through;
+}
+.todo-item.ng-enter {
+    animation: fadeInLeft 1s;
+}
+.todo-item.ng-leave {
+    animation: bounceOut 1s;
+}

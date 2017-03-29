@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch10_13</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+    <script src="/angular-extends/angular-filter.js"></script>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"/>
+</head>
+<body>
+<div ng-controller="MainController">
+    <table id="searchTextResults" class="table table-bordered">  
+       <tr class="bg-info"><th>名称</th><th>价格</th></tr>  
+       <tr ng-repeat="product in products|first:1">  
+        <td>{{product.name}}</td>  
+        <td>{{product.price}}</td>  
+       </tr>  
+    </table> 
+</div>
+<script>
+    var app = angular.module("app", ['angular.filter']);
+    app.controller("MainController", function($scope) {
+        $scope.products = [{name:'移动电源', price:500},  
+            {name:'手机', price:1999},  
+            {name:'笔记本', price:4999},  
+            {name:'充电器', price:100},  
+            {name:'耳机', price:200}];  
+    });
+</script>
+</body>
+</html>

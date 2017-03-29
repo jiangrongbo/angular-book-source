@@ -1,0 +1,19 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch10_01</title>
+    <script src="/angular-1.5.5/angular.js"></script> 
+</head>
+<body>
+<div ng-controller="MainController">
+    {{amount}}
+</div>
+<script>
+    var app = angular.module('app',[]);
+    app.controller("MainController",function($scope,currencyFilter){
+        $scope.amount = currencyFilter(1000123);
+    });
+</script>
+</body>
+</html>

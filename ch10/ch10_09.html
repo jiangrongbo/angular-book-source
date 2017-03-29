@@ -1,0 +1,29 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ch10_09</title>
+    <script src="/angular-1.5.5/angular.js"></script>
+</head>
+<body>
+<div ng-controller="MainController">
+    <div>截取数组前两个元素：</div>
+    <div ng-repeat="person in persons|limitTo:2">{{person|json}}</div>
+    <div>截取字符串前7个字符：</div>
+    <div>{{message|limitTo:7}}</div>
+</div>
+<script>
+    var app = angular.module("app", []);
+
+    app.controller("MainController", function($scope) {
+         $scope.persons = [
+             {name:"Smith",age:23},
+             {name:"Jane",age:30},
+             {name:"Jack",age:32},
+             {name:"Michael",age:40}
+         ];
+        $scope.message = "welcome to you!";
+    });  
+</script>
+</body>
+</html>
